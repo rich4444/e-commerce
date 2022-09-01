@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/e-commerce/static/css/main.3348e5fa.css",
+    "main.js": "/e-commerce/static/js/main.883c98bb.js",
+    "static/media/hoddie.webp": "/e-commerce/static/media/hoddie.f574ca1bc8656b9e4acd.webp",
+    "static/media/cosplay.webp": "/e-commerce/static/media/cosplay.617d1142d45e9d60ba80.webp",
+    "static/media/uniform.webp": "/e-commerce/static/media/uniform.a3f30369e2929247bf81.webp",
+    "index.html": "/e-commerce/index.html",
+    "main.3348e5fa.css.map": "/e-commerce/static/css/main.3348e5fa.css.map",
+    "main.883c98bb.js.map": "/e-commerce/static/js/main.883c98bb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3348e5fa.css",
+    "static/js/main.883c98bb.js"
+  ]
+}
