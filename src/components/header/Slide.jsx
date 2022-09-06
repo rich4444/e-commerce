@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Slide = ({
-    textRight,
-    textLeft,
+    text,
     middleElement,
     cPrimary,
     cSecondary,
@@ -19,9 +18,8 @@ const Slide = ({
             id={id}
             started={started}
         >
-            <h3 className="leftText">{textLeft}</h3>
             <div className="middleElement">{middleElement}</div>
-            <h3 className="rightText">{textRight}</h3>
+            <h3 className="rightText">{text}</h3>
         </SlideStyled>
     );
 };
@@ -49,15 +47,16 @@ const SlideStyled = styled.div`
         position: absolute;
     }
     width: 100%;
-    height: 300px;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 20px;
     align-items: center;
-    padding: 20px 50px;
+    padding: 20px 50px 20px 70px;
     overflow: hidden;
 
     h3 {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 5vw, 4rem);
         font-weight: 900;
         color: white;
         text-shadow: 1px 1px 1px black;
@@ -65,14 +64,10 @@ const SlideStyled = styled.div`
         word-break: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
-        &:first-child {
-            text-align: right;
-        }
     }
 
     img {
         height: 200px;
-        transform: rotate(${(props) => props.angle / 5 + "deg"}) !important;
         transition: transform 3s ease;
         animation: float 6s ease-in-out infinite;
     }
@@ -97,24 +92,19 @@ const SlideStyled = styled.div`
 
     @keyframes float {
         0% {
-            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
-            transform: translatey(0px);
+            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.6));
+            transform: translatey(5px);
         }
         50% {
-            filter: drop-shadow(5px 25px 15px rgba(0, 0, 0, 0.2));
+            filter: drop-shadow(5px 25px 10px rgba(0, 0, 0, 0.2));
             transform: translatey(-15px);
         }
         100% {
-            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
-            transform: translatey(0px);
+            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.6));
+            transform: translatey(5px);
         }
     }
 
-    .leftText {
-        transform: translateX(-100%);
-        filter: opacity(0);
-        animation: slideInFromLeft 1s ease-out 1s forwards;
-    }
     .rightText {
         transform: translateX(100%);
         filter: opacity(0);
@@ -124,17 +114,6 @@ const SlideStyled = styled.div`
         transform: translateY(110%);
         filter: opacity(0);
         animation: slideInFromBottom 1s ease-out 1s forwards;
-    }
-
-    @keyframes slideInFromLeft {
-        0% {
-            transform: translateX(-100%);
-            filter: opacity(0);
-        }
-        100% {
-            transform: translateX(0);
-            filter: opacity(1);
-        }
     }
 
     @keyframes slideInFromRight {
@@ -150,32 +129,30 @@ const SlideStyled = styled.div`
 
     @keyframes slideInFromBottom {
         0% {
-            transform: translateY(200%);
+            transform: translateX(-200%);
             filter: opacity(0);
         }
         100% {
-            transform: translateY(0);
+            transform: translateX(0);
             filter: opacity(1);
         }
     }
 
-    @media (max-width: 700px) {
-        flex-direction: column;
-
-        padding: 20px 0;
+    @media (max-width: 768px) {
+        padding: 50px 30px 10px 30px;
         h3 {
-            font-size: 1.5rem;
-            text-align: center;
-            &:first-child {
-                text-align: center;
-            }
-        }
-        img {
+            font-size: clamp(2rem, 5vw, 3rem);
         }
     }
 
-    @media (max-width: 400px) {
-        height: 400px;
+    @media (max-width: 480px) {
+        text-align: center;
+        flex-direction: column;
+        padding: 100px 30px 10px 30px;
+        gap: 10px;
+        h3 {
+            font-size: clamp(1rem, 10vw, 2rem);
+        }
     }
 `;
 

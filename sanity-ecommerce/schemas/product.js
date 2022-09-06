@@ -1,3 +1,5 @@
+import { bool } from "prop-types";
+
 export default {
     name: "product",
     title: "Product",
@@ -38,6 +40,17 @@ export default {
             name: "type",
             title: "Type",
             type: "string",
+        },
+        {
+            name: "tags",
+            title: "Tags",
+            type: "array",
+            of: [{ type: "string" }],
+        },
+        {
+            name: "sale",
+            title: "Sale",
+            type: "boolean",
         },
     ],
 };
