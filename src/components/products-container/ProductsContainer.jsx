@@ -36,7 +36,6 @@ const ProductsContainer = () => {
         glare: true,
         "max-glare": 0.5,
         reverse: true,
-        scale: 1.1,
         transition: true,
         speed: 300,
         max: 10,

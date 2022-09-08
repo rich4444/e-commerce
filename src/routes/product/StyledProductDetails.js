@@ -46,10 +46,36 @@ const StyledProductDetails = styled.div`
         aspect-ratio: 0.75;
         max-width: 50vw;
         box-shadow: 5px 5px 10px 0 #00000080;
+        position: relative;
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .images-preview-container {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            height: 100%;
+            max-width: 20%;
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            .images-preview {
+                aspect-ratio: 1;
+                background-color: white;
+                border-radius: 50%;
+                overflow: hidden;
+                &.selected {
+                    border: 2px solid black;
+                }
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
         }
     }
 

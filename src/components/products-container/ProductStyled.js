@@ -15,7 +15,6 @@ const ProductStyled = styled.div`
     border: 1px solid gray;
     max-width: 100%;
     &:hover {
-        z-index: 10;
         box-shadow: 0 0 20px 5px #5e5e5e88;
     }
     .data {

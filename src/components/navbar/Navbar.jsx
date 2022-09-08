@@ -19,12 +19,19 @@ const Navbar = () => {
         dispatch(changeType(type));
     }
 
+    function ShowNavbar() {
+        setShowNavbar(!showNavbar);
+        setShowFilters(false);
+    }
+
+    function ShowFilters() {
+        setShowFilters(!showFilters);
+        setShowNavbar(false);
+    }
+
     return (
         <NavbarStyled>
-            <button
-                className="show-navbar"
-                onClick={() => setShowNavbar(!showNavbar)}
-            >
+            <button className="show-navbar" onClick={ShowNavbar}>
                 {showNavbar ? (
                     <img src={IconClose} alt="close icon" />
                 ) : (
@@ -56,10 +63,7 @@ const Navbar = () => {
                 </ul>
             )}
 
-            <button
-                className="filters-button"
-                onClick={() => setShowFilters(!showFilters)}
-            >
+            <button className="filters-button" onClick={ShowFilters}>
                 {showFilters ? (
                     <img src={IconClose} alt="close icon" />
                 ) : (

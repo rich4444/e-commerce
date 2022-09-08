@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTag, removeTag } from "../../redux/tagsSlice";
 import { changeSort } from "../../redux/sortSlice";
 
 const Filters = () => {
+    const currentTags = useSelector((state) => state.tags.value);
+    const currentSort = useSelector((state) => state.sort.value);
     const dispatch = useDispatch();
 
     const setRemoveTag = (event) => {
@@ -19,6 +21,7 @@ const Filters = () => {
                 onChange={(event) => dispatch(changeSort(event.target.value))}
                 name="order"
                 id="order"
+                defaultValue={currentSort}
             >
                 <option value="priceAsc">Precio(ascendente)</option>
                 <option value="priceDesc">Precio(descendente)</option>
@@ -33,6 +36,7 @@ const Filters = () => {
                     name="hombres"
                     value="hombre"
                     id="hombres"
+                    checked={currentTags.includes("hombre")}
                 />
                 <label htmlFor="hombres">Hombres</label>
             </div>
@@ -44,6 +48,7 @@ const Filters = () => {
                     name="mujeres"
                     value="mujer"
                     id="mujeres"
+                    checked={currentTags.includes("mujer")}
                 />
                 <label htmlFor="mujeres">Mujeres</label>
             </div>
@@ -55,6 +60,7 @@ const Filters = () => {
                     name="ninos"
                     value="ninos"
                     id="ninos"
+                    checked={currentTags.includes("ninos")}
                 />
                 <label htmlFor="ninos">Niños</label>
             </div>
@@ -66,6 +72,7 @@ const Filters = () => {
                     name="buzos"
                     value="buzo"
                     id="buzos"
+                    checked={currentTags.includes("buzo")}
                 />
                 <label htmlFor="buzos">Buzos</label>
             </div>
@@ -77,6 +84,7 @@ const Filters = () => {
                     name="pantalones"
                     value="pantalon"
                     id="pantalones"
+                    checked={currentTags.includes("pantalon")}
                 />
                 <label htmlFor="pantalones">Pantalones</label>
             </div>
@@ -88,6 +96,7 @@ const Filters = () => {
                     name="camisetas"
                     value="camiseta"
                     id="camisetas"
+                    checked={currentTags.includes("camiseta")}
                 />
                 <label htmlFor="camisetas">Camisetas</label>
             </div>
@@ -98,18 +107,9 @@ const Filters = () => {
                     name="vestido"
                     value="vestido"
                     id="vestido"
+                    checked={currentTags.includes("vestido")}
                 />
                 <label htmlFor="vestido">Vestidos</label>
-            </div>
-            <div>
-                <input
-                    onChange={(event) => setRemoveTag(event)}
-                    type="checkbox"
-                    name="ropa-interior"
-                    value="ropa-interior"
-                    id="ropa-interior"
-                />
-                <label htmlFor="ropa-interior">Ropa interior</label>
             </div>
 
             <div>
@@ -119,6 +119,7 @@ const Filters = () => {
                     name="traje-bano"
                     value="playa"
                     id="traje-bano"
+                    checked={currentTags.includes("playa")}
                 />
                 <label htmlFor="traje-bano">Trajes de Baño</label>
             </div>
@@ -130,6 +131,7 @@ const Filters = () => {
                     name="ropa-interior"
                     value="ropa-interior"
                     id="ropa-interior"
+                    checked={currentTags.includes("ropa-interior")}
                 />
                 <label htmlFor="ropa-interior">Ropa interior</label>
             </div>
@@ -141,6 +143,7 @@ const Filters = () => {
                     name="verano"
                     value="verano"
                     id="verano"
+                    checked={currentTags.includes("verano")}
                 />
                 <label htmlFor="verano">Ropa de Verano</label>
             </div>
@@ -152,6 +155,7 @@ const Filters = () => {
                     name="invierno"
                     value="invierno"
                     id="invierno"
+                    checked={currentTags.includes("invierno")}
                 />
                 <label htmlFor="invierno">Ropa de Invierno</label>
             </div>

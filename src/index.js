@@ -4,14 +4,13 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useRoutes } from "react-router-dom";
+import NotFound from "./routes/not-found/NotFound";
 import ProductDetails from "./routes/product/productDetails";
 
 import { useDispatch } from "react-redux";
 import { client } from "./lib/client";
 import { saveData } from "./redux/productsSlice";
-
-
 
 function LoadData() {
     const dispatch = useDispatch();
@@ -40,6 +39,7 @@ root.render(
                     <Route path="/" element={<App />} />
                     <Route path="/e-commerce" element={<App />} />
                     <Route path="/product/:id" element={<ProductDetails />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
         </Provider>

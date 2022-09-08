@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { urlFor } from "../../lib/client";
@@ -8,6 +8,17 @@ import { Link } from "react-router-dom";
 const ProductDetails = () => {
     const { id } = useParams();
     const productsData = useSelector((state) => state.productsData.value);
+    const [currentImage, setCurrentImage] = useState();
+
+    //TODO make it change the image automatically after X seconds
+    // const previewImages = [];
+
+    // const intervalID = setInterval(changeImage, 1000);
+    // function changeImage() {
+    //     if (previewImages.length > 1) {
+    //         console.log(previewImages);
+    //     }
+    // }
 
     return (
         <>
@@ -16,15 +27,51 @@ const ProductDetails = () => {
                     return p.slug.current == id;
                 })
                 ?.map((p, i) => {
+                    if (!currentImage) setCurrentImage(p.image[0]);
                     return (
                         <StyledProductDetails
                             key={i}
-                            image={urlFor(p.image[0])}
+                            image={
+                                currentImage
+                                    ? urlFor(currentImage)
+                                    : urlFor(p.image[0])
+                            }
                         >
                             <div className="bg-image"></div>
 
                             <div className="img-container">
-                                <img src={urlFor(p.image[0])} alt="" />
+                                <img
+                                    src={
+                                        currentImage
+                                            ? urlFor(currentImage)
+                                            : urlFor(p.image[0])
+                                    }
+                                    alt=""
+                                />
+
+                                <div className="images-preview-container">
+                                    {p.image.map((item, j) => {
+                                        //TODO change image automatically?
+                                        //previewImages.push(item);
+                                        return (
+                                            <div
+                                                key={j}
+                                                className={`images-preview ${
+                                                    currentImage == item &&
+                                                    "selected"
+                                                }`}
+                                            >
+                                                <img
+                                                    src={urlFor(item)}
+                                                    alt="preview of another model"
+                                                    onClick={() =>
+                                                        setCurrentImage(item)
+                                                    }
+                                                />
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
 
                             <div className="data-container">
@@ -59,7 +106,10 @@ const ProductDetails = () => {
                                     <button className="back">
                                         <Link
                                             to={"/"}
-                                            style={{ textDecoration: "none", color: "inherit"}}
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "inherit",
+                                            }}
                                         >
                                             {"<"} Volver
                                         </Link>
