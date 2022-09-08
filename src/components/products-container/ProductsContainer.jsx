@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import Product from "./Product";
 import { useSelector } from "react-redux";
+import ProductsContainerStyled from "./ProductsContainerStyled";
 
 const ProductsContainer = () => {
     const productsData = useSelector((state) => state.productsData.value);
@@ -15,12 +15,11 @@ const ProductsContainer = () => {
     };
 
     const matchTags = (tags) => {
-        if (currentTags.length <= 0) return true;
+        if (currentTags.length <= 0 || tags == undefined) return true;
         for (let i = 0; i < currentTags.length; i++) {
-            console.log(currentTags);
-            if (tags.includes(currentTags[i])) return true;
+            if (!tags.includes(currentTags[i])) return false;
         }
-        return false;
+        return true;
     };
 
     const sortFunc = (a, b) => {
@@ -57,33 +56,5 @@ const ProductsContainer = () => {
         </ProductsContainerStyled>
     );
 };
-
-const ProductsContainerStyled = styled.div`
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    --grid-layout-gap: 10px;
-    --grid-column-count: 4;
-    --grid-item--min-width: 250px;
-
-    /**
-   * Calculated values.
-   */
-    --gap-count: calc(var(--grid-column-count) - 1);
-    --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
-    --grid-item--max-width: calc(
-        (100% - var(--total-gap-width)) / var(--grid-column-count)
-    );
-
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fill,
-        minmax(
-            max(var(--grid-item--min-width), var(--grid-item--max-width)),
-            1fr
-        )
-    );
-    grid-gap: var(--grid-layout-gap);
-`;
 
 export default ProductsContainer;

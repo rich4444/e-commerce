@@ -1,11 +1,23 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import Cart from "../cart/Cart";
 import Filters from "./Filters";
+import { useDispatch } from "react-redux";
+import { changeType } from "../../redux/typeSlice";
+import NavbarStyled from "./NavbarStyled";
+import IconClose from "./../../images/icons/icon-close.png";
+import IconFilters from "./../../images/icons/icon-filters.png";
+import IconMenu from "./../../images/icons/icon-menu.png";
+import IconShop from "./../../images/icons/icon-shop.png";
 
 const Navbar = () => {
+    const dispatch = useDispatch();
+
     const [showFilters, setShowFilters] = useState(false);
     const [showNavbar, setShowNavbar] = useState(false);
+
+    function NavbarItemClick(type) {
+        setShowNavbar(!showNavbar);
+        dispatch(changeType(type));
+    }
 
     return (
         <NavbarStyled>
@@ -13,64 +25,55 @@ const Navbar = () => {
                 className="show-navbar"
                 onClick={() => setShowNavbar(!showNavbar)}
             >
-                {showNavbar ? "CERRAR" : "NAVBAR"}
+                {showNavbar ? (
+                    <img src={IconClose} alt="close icon" />
+                ) : (
+                    <img src={IconMenu} alt="menu icon" />
+                )}
             </button>
             {showNavbar && (
-                <ul>
-                    <li>| ROPA</li>
-                    <li>| COSPLAY</li>
-                    <li>| UNIFORMES</li>
+                <ul id="navbar-small">
+                    <li>
+                        <button onClick={() => NavbarItemClick("ropa")}>
+                            | ROPA
+                        </button>
+                    </li>
+                    <li>
+                        <button onClick={() => NavbarItemClick("cosplay")}>
+                            | COSPLAY
+                        </button>
+                    </li>
+                    <li>
+                        <button onClick={() => NavbarItemClick("otros")}>
+                            | OTROS
+                        </button>
+                    </li>
+                    <li>
+                        <button onClick={() => NavbarItemClick("all")}>
+                            | TODO
+                        </button>
+                    </li>
                 </ul>
             )}
+
             <button
                 className="filters-button"
                 onClick={() => setShowFilters(!showFilters)}
             >
-                {showFilters ? "CERRAR" : "FILTROS"}
+                {showFilters ? (
+                    <img src={IconClose} alt="close icon" />
+                ) : (
+                    <img src={IconFilters} alt="filters icon" />
+                )}
             </button>
-            <Cart />
+
+            <button className="cart-button">
+                <img src={IconShop} alt="shop icon" />
+            </button>
 
             {showFilters && <Filters />}
         </NavbarStyled>
     );
 };
-
-const NavbarStyled = styled.nav`
-    position: sticky;
-    z-index: 10;
-    top: 0;
-    display: flex;
-    background-color: #f8d9fc;
-    padding: 5px 15px;
-    .filters-button {
-        background-color: red;
-        margin-left: auto;
-        margin-right: 10px;
-    }
-
-    ul {
-        display: flex;
-        list-style: none;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 20px;
-        font-weight: 600;
-    }
-
-    @media (min-width: 300px) {
-        ul {
-            position: absolute;
-            background-color: white;
-            top: 50px;
-            left: 20px;
-            flex-direction: column;
-            align-items: flex-start;
-            width: 200px;
-            border: 1px solid gray;
-            padding: 15px;
-            box-shadow: 3px 3px 5px 0 #11111185;
-        }
-    }
-`;
 
 export default Navbar;

@@ -53,7 +53,7 @@ const Filters = () => {
                     onChange={(event) => setRemoveTag(event)}
                     type="checkbox"
                     name="ninos"
-                    value="nino"
+                    value="ninos"
                     id="ninos"
                 />
                 <label htmlFor="ninos">Niños</label>
@@ -117,7 +117,7 @@ const Filters = () => {
                     onChange={(event) => setRemoveTag(event)}
                     type="checkbox"
                     name="traje-bano"
-                    value="traje-bano"
+                    value="playa"
                     id="traje-bano"
                 />
                 <label htmlFor="traje-bano">Trajes de Baño</label>
@@ -143,6 +143,17 @@ const Filters = () => {
                     id="verano"
                 />
                 <label htmlFor="verano">Ropa de Verano</label>
+            </div>
+
+            <div>
+                <input
+                    onChange={(event) => setRemoveTag(event)}
+                    type="checkbox"
+                    name="invierno"
+                    value="invierno"
+                    id="invierno"
+                />
+                <label htmlFor="invierno">Ropa de Invierno</label>
             </div>
         </FilterStyled>
     );

@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { urlFor } from "../../lib/client";
-import styled from "styled-components";
+import StyledProductDetails from "./StyledProductDetails";
+import { Link } from "react-router-dom";
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -12,7 +13,6 @@ const ProductDetails = () => {
         <>
             {productsData
                 ?.filter((p) => {
-                    console.log(p)
                     return p.slug.current == id;
                 })
                 ?.map((p, i) => {
@@ -22,31 +22,55 @@ const ProductDetails = () => {
                             image={urlFor(p.image[0])}
                         >
                             <div className="bg-image"></div>
-                            <h1>TESINGS</h1>
-                            <h2>{p.name}</h2>
-                            <img src={urlFor(p.image[0])} alt="" />
+
+                            <div className="img-container">
+                                <img src={urlFor(p.image[0])} alt="" />
+                            </div>
+
+                            <div className="data-container">
+                                <div className="title-container">
+                                    <h1>{p.name}</h1>
+                                    <h2>${p.price}</h2>
+                                </div>
+
+                                <div className="options-container">
+                                    <label htmlFor="cantidad">Cantidad </label>
+                                    <input
+                                        type="number"
+                                        name="cantidad"
+                                        id="cantidad"
+                                        min="1"
+                                        defaultValue="1"
+                                    />
+                                    <label htmlFor="color">Color </label>
+                                    <select name="color" id="selected-color">
+                                        <option value="black">Negro</option>
+                                    </select>
+                                    <label htmlFor="talle">Talle </label>
+                                    <select name="talle" id="selected-size">
+                                        <option value="M">M</option>
+                                    </select>
+                                </div>
+
+                                <div className="buttons-container">
+                                    <button className="buy">COMPRAR</button>
+                                    <button className="add">CARRITO 🛒</button>
+
+                                    <button className="back">
+                                        <Link
+                                            to={"/"}
+                                            style={{ textDecoration: "none", color: "inherit"}}
+                                        >
+                                            {"<"} Volver
+                                        </Link>
+                                    </button>
+                                </div>
+                            </div>
                         </StyledProductDetails>
                     );
                 })}
         </>
     );
 };
-
-const StyledProductDetails = styled.div`
-    height: 100vh;
-    overflow: hidden;
-    .bg-image {
-        position: fixed;
-        left: 0;
-        right: 0;
-        z-index: -1;
-        display: block;
-        height: 100%;
-        background-image: url(${(props) => props.image});
-        background-size: cover;
-        background-position: center;
-        filter: blur(10px);
-    }
-`;
 
 export default ProductDetails;

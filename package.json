@@ -4,6 +4,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@fontsource/raleway": "^4.5.10",
         "@reduxjs/toolkit": "^1.8.5",
         "@sanity/client": "^3.3.6",
         "@sanity/image-url": "^1.0.1",

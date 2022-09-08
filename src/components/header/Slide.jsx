@@ -93,15 +93,15 @@ const SlideStyled = styled.div`
     @keyframes float {
         0% {
             filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.6));
-            transform: translatey(5px);
+            translate: 0 5px;
         }
         50% {
             filter: drop-shadow(5px 25px 10px rgba(0, 0, 0, 0.2));
-            transform: translatey(-15px);
+            translate: 0 -15px;
         }
         100% {
             filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.6));
-            transform: translatey(5px);
+            translate: 0 5px;
         }
     }
 

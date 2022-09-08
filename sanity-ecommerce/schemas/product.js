@@ -40,17 +40,49 @@ export default {
             name: "type",
             title: "Type",
             type: "string",
+            options: {
+                list: [
+                    { title: "Ropa", value: "ropa" },
+                    { title: "Cosplay", value: "cosplay" },
+                    { title: "Otros", value: "otros" },
+                ],
+            },
+        },
+        {
+            name: "sale",
+            title: "Sale",
+            type: "boolean",
         },
         {
             name: "tags",
             title: "Tags",
             type: "array",
             of: [{ type: "string" }],
+            options: {
+                layout: "grid",
+                list: [
+                    { title: "Hombre", value: "hombre" },
+                    { title: "Mujer", value: "mujer" },
+                    { title: "Niños", value: "ninos" },
+                    { title: "Verano", value: "verano" },
+                    { title: "Invierno", value: "invierno" },
+                    { title: "RopaInterior", value: "ropa-interior" },
+                    { title: "Playa", value: "playa" },
+                    { title: "Camiseta", value: "camiseta" },
+                    { title: "Pantalon", value: "pantalon" },
+                    { title: "Buzo", value: "buzo" },
+                    { title: "Vestido", value: "vestido" },
+                ],
+            },
         },
         {
-            name: "sale",
-            title: "Sale",
-            type: "boolean",
+            name: "search",
+            title: "Search",
+            type: "array",
+            of: [{ type: "string" }],
+            options: {
+                layout: "tags",
+            },
         },
     ],
 };
