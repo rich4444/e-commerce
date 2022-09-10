@@ -5,6 +5,7 @@ import productsReducer from "./productsSlice.js";
 import typeReducer from "./typeSlice.js";
 import tagsReducer from "./tagsSlice.js";
 import sortReducer from "./sortSlice.js";
+import cartReducer from "./cartSlice.js";
 
 export const store = configureStore({
     reducer: {
@@ -13,5 +14,6 @@ export const store = configureStore({
         tags: tagsReducer,
         type: typeReducer,
         sort: sortReducer,
+        cart: cartReducer,
     },
 });

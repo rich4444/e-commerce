@@ -43,14 +43,14 @@ const StyledProductDetails = styled.div`
     .img-container {
         background-color: white;
         height: 70vh;
-        aspect-ratio: 0.75;
+        aspect-ratio: 1.33;
         max-width: 50vw;
         box-shadow: 5px 5px 10px 0 #00000080;
         position: relative;
+        overflow: hidden;
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
         }
 
         .images-preview-container {
@@ -68,6 +68,7 @@ const StyledProductDetails = styled.div`
                 background-color: white;
                 border-radius: 50%;
                 overflow: hidden;
+                cursor: pointer;
                 &.selected {
                     border: 2px solid black;
                 }
@@ -177,6 +178,15 @@ const StyledProductDetails = styled.div`
                     margin-top: 5px;
                     background-color: transparent;
                     text-align: right;
+                }
+
+                &.add {
+                    span {
+                        background-color: red;
+                        color: white;
+                        padding: 5px;
+                        border-radius: 50px;
+                    }
                 }
             }
         }

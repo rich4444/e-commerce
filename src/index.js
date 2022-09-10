@@ -7,6 +7,7 @@ import { store } from "./redux/store";
 import { BrowserRouter, Routes, Route, useRoutes } from "react-router-dom";
 import NotFound from "./routes/not-found/NotFound";
 import ProductDetails from "./routes/product/productDetails";
+import Cart from "./routes/cart/Cart";
 
 import { useDispatch } from "react-redux";
 import { client } from "./lib/client";
@@ -38,6 +39,7 @@ root.render(
                 <Routes>
                     <Route path="/" element={<App />} />
                     <Route path="/e-commerce" element={<App />} />
+                    <Route path="/cart" element={<Cart />} />
                     <Route path="/product/:id" element={<ProductDetails />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>

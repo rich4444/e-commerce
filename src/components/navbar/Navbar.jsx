@@ -7,6 +7,7 @@ import IconClose from "./../../images/icons/icon-close.png";
 import IconFilters from "./../../images/icons/icon-filters.png";
 import IconMenu from "./../../images/icons/icon-menu.png";
 import IconShop from "./../../images/icons/icon-shop.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -72,7 +73,15 @@ const Navbar = () => {
             </button>
 
             <button className="cart-button">
-                <img src={IconShop} alt="shop icon" />
+                <Link
+                    to={"/cart"}
+                    style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                    }}
+                >
+                    <img src={IconShop} alt="shop icon" />
+                </Link>
             </button>
 
             {showFilters && <Filters />}

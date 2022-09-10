@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { urlFor } from "../../lib/client";
 import StyledProductDetails from "./StyledProductDetails";
 import { Link } from "react-router-dom";
+import { add } from "../../redux/cartSlice";
 
 const ProductDetails = () => {
     const { id } = useParams();
     const productsData = useSelector((state) => state.productsData.value);
+    const cartData = useSelector((state) => state.cart.value);
     const [currentImage, setCurrentImage] = useState();
+    const [currentQty, setCurrentQty] = useState(1);
+    const dispatch = useDispatch();
 
     //TODO make it change the image automatically after X seconds
     // const previewImages = [];
@@ -20,11 +24,22 @@ const ProductDetails = () => {
     //     }
     // }
 
+    function qtyHandler(e) {
+        let newValue = Number(e.target.value);
+        if (newValue < 1) newValue = 1;
+        setCurrentQty(newValue);
+    }
+
+    function addToCart(p) {
+        const newObj = { product: p, qty: currentQty };
+        dispatch(add(newObj));
+    }
+
     return (
         <>
             {productsData
                 ?.filter((p) => {
-                    return p.slug.current == id;
+                    return p.slug.current === id;
                 })
                 ?.map((p, i) => {
                     if (!currentImage) setCurrentImage(p.image[0]);
@@ -87,7 +102,8 @@ const ProductDetails = () => {
                                         name="cantidad"
                                         id="cantidad"
                                         min="1"
-                                        defaultValue="1"
+                                        value={currentQty}
+                                        onChange={(e) => qtyHandler(e)}
                                     />
                                     <label htmlFor="color">Color </label>
                                     <select name="color" id="selected-color">
@@ -101,7 +117,20 @@ const ProductDetails = () => {
 
                                 <div className="buttons-container">
                                     <button className="buy">COMPRAR</button>
-                                    <button className="add">CARRITO 🛒</button>
+
+                                    <button
+                                        className="add"
+                                        onClick={() => addToCart(p)}
+                                    >
+                                        CARRITO 🛒
+                                        <span>
+                                            {Object.entries(cartData).reduce(
+                                                (acc, current) =>
+                                                    (acc += current[1].qty),
+                                                0
+                                            )}
+                                        </span>
+                                    </button>
 
                                     <button className="back">
                                         <Link

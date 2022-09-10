@@ -21,6 +21,7 @@ const Product = (props) => {
                 image={urlFor(product.image[0])}
                 ref={tilt}
                 {...rest}
+                className={product.sale && "onSale"}
             >
                 <div className="data">
                     <h4>{product.name}</h4>
