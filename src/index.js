@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { client } from "./lib/client";
 import { saveData } from "./redux/productsSlice";
 
+
 function LoadData() {
     const dispatch = useDispatch();
 

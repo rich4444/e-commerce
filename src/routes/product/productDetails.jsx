@@ -116,7 +116,20 @@ const ProductDetails = () => {
                                 </div>
 
                                 <div className="buttons-container">
-                                    <button className="buy">COMPRAR</button>
+                                    <Link
+                                        to={"/cart"}
+                                        style={{
+                                            textDecoration: "none",
+                                            color: "inherit",
+                                        }}
+                                    >
+                                        <button
+                                            className="buy"
+                                            onClick={() => addToCart(p)}
+                                        >
+                                            COMPRAR
+                                        </button>
+                                    </Link>
 
                                     <button
                                         className="add"
