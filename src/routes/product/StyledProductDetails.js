@@ -154,8 +154,8 @@ const StyledProductDetails = styled.div`
                 font-size: 1rem;
                 cursor: pointer;
                 transition: all 0.3s;
-                &:nth-child(1),
-                &:nth-child(2) {
+                &.add,
+                &.buy {
                     &:hover {
                         transform: scale(1.05);
                         box-shadow: 0 5px 10px 0 #00000096;
@@ -166,11 +166,12 @@ const StyledProductDetails = styled.div`
                     }
                 }
 
-                &:nth-child(1) {
+                &.buy {
                     background-color: black;
                     color: white;
+                    width: 100%;
                 }
-                &:nth-child(2) {
+                &.add {
                     background-color: white;
                     border: 2px solid black;
                 }

@@ -1,14 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import { urlFor } from "../../lib/client";
+import IconClose from "./../../images/icons/icon-close.png";
+import { useDispatch } from "react-redux";
+import { remove } from "../../redux/cartSlice";
 
 const CartProduct = ({ product, qty }) => {
+    const dispatch = useDispatch();
+
     return (
         <StyledCartProduct>
-            <button className="removeItem">X</button>
+            <button
+                className="removeItem"
+                onClick={() => dispatch(remove(product._id))}
+            >
+                <img src={IconClose} alt="" />
+            </button>
             <img
                 src={urlFor(product.image[0])}
-                alt="small photo of the product"
+                alt="small preview of the product"
             />
             <p className="productName">{product.name}</p>
             <p>x{qty}</p>
@@ -26,6 +36,14 @@ const StyledCartProduct = styled.div`
     .removeItem {
         height: 30px;
         width: 30px;
+        background-color: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        img {
+            height: 100%;
+            width: 100%;
+        }
     }
     img {
         width: 50px;
