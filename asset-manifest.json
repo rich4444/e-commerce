@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/e-commerce/static/css/main.c5218218.css",
-    "main.js": "/e-commerce/static/js/main.ee3e99bb.js",
+    "main.css": "/e-commerce/static/css/main.594c26bd.css",
+    "main.js": "/e-commerce/static/js/main.2178fbd6.js",
     "static/media/hoddie.webp": "/e-commerce/static/media/hoddie.f574ca1bc8656b9e4acd.webp",
     "static/media/cosplay.webp": "/e-commerce/static/media/cosplay.617d1142d45e9d60ba80.webp",
     "static/media/notfound.webp": "/e-commerce/static/media/notfound.aed153db448e225b027e.webp",
@@ -14,11 +14,11 @@
     "static/media/raleway-cyrillic-400-normal.woff2": "/e-commerce/static/media/raleway-cyrillic-400-normal.f7d0cc4bf9cf8da4f023.woff2",
     "static/media/raleway-vietnamese-400-normal.woff2": "/e-commerce/static/media/raleway-vietnamese-400-normal.bb6f51e1b67ec8802d57.woff2",
     "index.html": "/e-commerce/index.html",
-    "main.c5218218.css.map": "/e-commerce/static/css/main.c5218218.css.map",
-    "main.ee3e99bb.js.map": "/e-commerce/static/js/main.ee3e99bb.js.map"
+    "main.594c26bd.css.map": "/e-commerce/static/css/main.594c26bd.css.map",
+    "main.2178fbd6.js.map": "/e-commerce/static/js/main.2178fbd6.js.map"
   },
   "entrypoints": [
-    "static/css/main.c5218218.css",
-    "static/js/main.ee3e99bb.js"
+    "static/css/main.594c26bd.css",
+    "static/js/main.2178fbd6.js"
   ]
 }
